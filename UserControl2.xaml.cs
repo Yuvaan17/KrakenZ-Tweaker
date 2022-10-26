@@ -682,19 +682,15 @@ namespace KrakenZ_Tweaker.UserControls
 
         private void Windows_Defender_Click(object sender, RoutedEventArgs e)
         {
-            RegistrySecurity rs = new RegistrySecurity(); // it is right string for this code
-            string currentUserStr = Environment.UserDomainName + "\\" + Environment.UserName;
-            rs.AddAccessRule(new RegistryAccessRule(currentUserStr, RegistryRights.WriteKey | RegistryRights.ReadKey | RegistryRights.Delete | RegistryRights.FullControl, AccessControlType.Allow));
-
+          
 
 
             if (Windows_Defender.IsChecked == true)
             {
+               
 
-                string[] keys = {
-                 @"SYSTEM\CurrentControlSet\Services\WinDefend",
+                string[] keys = {                 
                  @"SYSTEM\CurrentControlSet\Services\SecurityHealthService",
-                 @"SYSTEM\CurrentControlSet\Services\WdNisSvc",
                  @"SYSTEM\CurrentControlSet\Services\Sense",
                  @"SYSTEM\CurrentControlSet\Services\wscsvc",
                             };
@@ -706,7 +702,21 @@ namespace KrakenZ_Tweaker.UserControls
 
                     using (var newKey = Registry.LocalMachine.OpenSubKey(key, true))
                     {
-                        newKey.SetAccessControl(rs);
+                        Microsoft.Win32.RegistryKey Key;
+                        Key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(key);
+                        RegistrySecurity rs = new RegistrySecurity();
+                        rs = Key.GetAccessControl();
+                        string currentUserStr = Environment.UserDomainName + "\\" + Environment.UserName;
+                        rs.AddAccessRule(
+                            new RegistryAccessRule(
+                                currentUserStr,
+                                RegistryRights.WriteKey
+                                | RegistryRights.ReadKey
+                                | RegistryRights.Delete
+                                | RegistryRights.FullControl,
+                                AccessControlType.Allow));
+
+
 
                         try
                         {
@@ -853,9 +863,7 @@ namespace KrakenZ_Tweaker.UserControls
             else
             {
                 string[] keys = {
-                 @"SYSTEM\CurrentControlSet\Services\WinDefend",
                  @"SYSTEM\CurrentControlSet\Services\SecurityHealthService",
-                 @"SYSTEM\CurrentControlSet\Services\WdNisSvc",
                  @"SYSTEM\CurrentControlSet\Services\Sense",
                  @"SYSTEM\CurrentControlSet\Services\wscsvc",
                             };
