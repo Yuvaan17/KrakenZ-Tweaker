@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="KrakenZ_Tweaker.UserControls.UserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KrakenZ_Tweaker.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="700">
+    <Grid Margin="0,0,0,0">
+        <TextBlock HorizontalAlignment="Center" Foreground="White" FontSize="50" Margin="0,33,0,0" TextWrapping="Wrap" Text="Hello! Welcome to KrakenZ            Tweaker " VerticalAlignment="Top" Height="110" FontFamily="Impact"/>
+        <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,233,0,0" TextWrapping="Wrap" Text="Create a restore point to get started!" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold"/>
+        <Separator Background="DarkGray" HorizontalAlignment="Center" Margin="0,180,0,0" VerticalAlignment="Top" Width="500" Height="1"/>
+        <Button x:Name="Restore_Point" FontFamily="Arial" Content="Click Here to create a new restore point" HorizontalAlignment="Center" Margin="0,281,0,0" VerticalAlignment="Top" Height="66" Width="390" FontSize="21" Click="Restore_Point_Click" Cursor="Hand" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+
+                    <Setter Property="Background" Value="#faff00"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter x:Name="Y" Property="Background" Value="#FCFF50"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Want to Revert the Changes using an existing restore point?" VerticalAlignment="Top" FontFamily="Bahnschrift SemiBold" Margin="0,402,0,0"/>
+        <Button x:Name="Revert_Restore_Point" FontFamily="Arial" Content="Click Here use an existing restore point!" HorizontalAlignment="Center" VerticalAlignment="Top" Height="66" Width="390" FontSize="21" Click="Revert_Restore_Point_Click" Cursor="Hand" Margin="0,501,0,0" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+
+                    <Setter Property="Background" Value="#0aff0e"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter x:Name="Y" Property="Background" Value="#47FF4A"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+    </Grid>
+</UserControl>
