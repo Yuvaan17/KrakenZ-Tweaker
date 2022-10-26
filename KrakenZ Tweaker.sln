@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrakenZ_Tweaker", "KrakenZ_Tweaker.csproj", "{47C4C25A-3048-42FD-BA2E-DE0365758391}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KrakenZ Tweaker", "KrakenZ Tweaker.csproj", "{47C4C25A-3048-42FD-BA2E-DE0365758391}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

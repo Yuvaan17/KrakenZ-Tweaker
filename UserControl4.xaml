@@ -64,7 +64,9 @@
         </Style>
     </UserControl.Resources>
     <StackPanel>
-        <CheckBox ToolTip="" Margin="10,40,0,0" Name ="Optimize_Registry" Checked="Optimize_Registry_Checked" Unchecked="Optimize_Registry_Unchecked"  FontSize="24" Foreground="White" >Optimize Registry</CheckBox>
+        <TextBlock Foreground="Gold" TextWrapping="Wrap" Text="Useful Windows Optimizations" FontFamily="Bahnschrift SemiBold" FontSize="50" Height="137" Margin="0,40,0,0"  />
+        <CheckBox Margin="0,0,0,0" Name ="Optimize_Registry" Click="Optimize_Registry_Click"  FontSize="24" Foreground="White" Width="614" >Registry Tweaks</CheckBox>
+        
 
     </StackPanel>
 
