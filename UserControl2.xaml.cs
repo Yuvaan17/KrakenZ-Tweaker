@@ -65,11 +65,6 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\PcaSvc",
        @"SYSTEM\CurrentControlSet\Services\Wecsvc",
        @"SYSTEM\CurrentControlSet\Services\WbioSrvc",
-           @"SYSTEM\CurrentControlSet\Services\WinDefend",
-                 @"SYSTEM\CurrentControlSet\Services\SecurityHealthService",
-                 @"SYSTEM\CurrentControlSet\Services\WdNisSvc",
-                 @"SYSTEM\CurrentControlSet\Services\Sense",
-                 @"SYSTEM\CurrentControlSet\Services\wscsvc",
 
 
 
@@ -169,10 +164,7 @@ namespace KrakenZ_Tweaker.UserControls
             {
                 Biometric_Services.IsChecked = true;
             }
-            if (dict.ElementAt(41).Value == 4)
-            {
-                Windows_Defender.IsChecked = true;
-            }
+          
             if (dict2.ElementAt(0).Value == 0)
             {
                 Game_DVR.IsChecked = true;
@@ -430,42 +422,50 @@ namespace KrakenZ_Tweaker.UserControls
         {
             if (Disable_Diagnostics.IsChecked == true)
             {
-                string[] keys = {
+                try
+                {
+                    string[] keys = {
                  @"SYSTEM\CurrentControlSet\Services\DiagTrack",
                  @"SYSTEM\CurrentControlSet\Services\dmwappushservice",
                  @"SYSTEM\CurrentControlSet\Services\diagsvc",
                  @"SYSTEM\CurrentControlSet\Services\diagnosticshub.standardcollector.service",
                  @"SYSTEM\CurrentControlSet\Services\WdiServiceHost",
-                 @"SYSTEM\CurrentControlSet\Services\WdiSystemHost"
+                 @"SYSTEM\CurrentControlSet\Services\WdiSystemHost",
+
+
                             };
 
-                foreach (string key in keys)
-                {
-                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
+                    foreach (string key in keys)
                     {
-
-                        try
+                        using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
                         {
 
-                            if (newKey == null)
+                            try
                             {
 
+                                if (newKey == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    newKey.SetValue("Start", 4, RegistryValueKind.DWord);
+                                }
                             }
-                            else
+                            catch (Exception)
                             {
-                                newKey.SetValue("Start", 4, RegistryValueKind.DWord);
                             }
                         }
-                        catch (Exception)
-                        {
-                        }
+
                     }
-
                 }
+                catch(Exception) { }
             }
             else
             {
-                string[] keys = {
+                try
+                {
+                    string[] keys = {
                  @"SYSTEM\CurrentControlSet\Services\DiagTrack",
                  @"SYSTEM\CurrentControlSet\Services\dmwappushservice",
                  @"SYSTEM\CurrentControlSet\Services\diagsvc",
@@ -474,29 +474,32 @@ namespace KrakenZ_Tweaker.UserControls
                  @"SYSTEM\CurrentControlSet\Services\WdiSystemHost"
                             };
 
-                foreach (string key in keys)
-                {
-                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
+                    foreach (string key in keys)
                     {
-                        try
+                        using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
                         {
-
-                            if (newKey == null)
+                            try
                             {
 
+                                if (newKey == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    newKey.SetValue("Start", 3, RegistryValueKind.DWord);
+                                }
                             }
-                            else
+                            catch (Exception)
                             {
-                                newKey.SetValue("Start", 3, RegistryValueKind.DWord);
                             }
                         }
-                        catch (Exception)
-                        {
-                        }
+
+
                     }
-
-
                 }
+                catch(Exception)
+                { }
 
             }
 
@@ -673,354 +676,6 @@ namespace KrakenZ_Tweaker.UserControls
 
                     }
                 }
-
-            }
-
-        }
-
-
-
-        private void Windows_Defender_Click(object sender, RoutedEventArgs e)
-        {
-          
-
-
-            if (Windows_Defender.IsChecked == true)
-            {
-               
-
-                string[] keys = {                 
-                 @"SYSTEM\CurrentControlSet\Services\SecurityHealthService",
-                 @"SYSTEM\CurrentControlSet\Services\Sense",
-                 @"SYSTEM\CurrentControlSet\Services\wscsvc",
-                            };
-
-                foreach (string key in keys)
-                {
-
-
-
-                    using (var newKey = Registry.LocalMachine.OpenSubKey(key, true))
-                    {
-                        Microsoft.Win32.RegistryKey Key;
-                        Key = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(key);
-                        RegistrySecurity rs = new RegistrySecurity();
-                        rs = Key.GetAccessControl();
-                        string currentUserStr = Environment.UserDomainName + "\\" + Environment.UserName;
-                        rs.AddAccessRule(
-                            new RegistryAccessRule(
-                                currentUserStr,
-                                RegistryRights.WriteKey
-                                | RegistryRights.ReadKey
-                                | RegistryRights.Delete
-                                | RegistryRights.FullControl,
-                                AccessControlType.Allow));
-
-
-
-                        try
-                        {
-
-                            newKey.SetValue("Start", 4, RegistryValueKind.DWord);
-                        }
-                        catch (Exception)
-                        { MessageBox.Show("First take full control of the registry key."); }
-
-
-
-                    }
-
-
-                    using (RegistryKey key1 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows Defender", true))
-                    {
-                        try
-                        {
-
-                            key1.CreateSubKey("DisableAntiSpyware");
-                            key1.SetValue("DisableAntiSpyware", 1, RegistryValueKind.DWord);
-                            key1.CreateSubKey("DisableRoutinelyTakingAction");
-                            key1.SetValue("DisableRoutinelyTakingAction", 1, RegistryValueKind.DWord);
-                            key1.CreateSubKey("ServiceKeepAlive");
-                            key1.SetValue("ServiceKeepAlive", 1, RegistryValueKind.DWord);
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-                    using (RegistryKey key2 = Registry.LocalMachine.OpenSubKey(@"Policies\Microsoft\Windows Defender\Real - Time Protection", true))
-                    {
-                        try
-                        {
-
-
-                            if (key2 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key2.CreateSubKey("DisableBehaviorMonitoring");
-                                key2.SetValue("DisableBehaviorMonitoring", 1, RegistryValueKind.DWord);
-                                key2.CreateSubKey("DisableIOAVProtection");
-                                key2.SetValue("DisableIOAVProtection", 1, RegistryValueKind.DWord);
-                                key2.CreateSubKey("DisableOnAccessProtection");
-                                key2.SetValue("DisableOnAccessProtection", 1, RegistryValueKind.DWord);
-                                key2.CreateSubKey("DisableRealtimeMonitoring");
-                                key2.SetValue("DisableRealtimeMonitoring", 1, RegistryValueKind.DWord);
-                            }
-                        }
-
-
-
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-
-
-                    using (RegistryKey key3 = Registry.LocalMachine.OpenSubKey(@"Policies\Microsoft\Windows Defender\Reporting", true))
-                    {
-                        try
-                        {
-
-                            if (key3 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key3.CreateSubKey("DisableEnhancedNotifications");
-                                key3.SetValue("DisableEnhancedNotifications", 1, RegistryValueKind.DWord);
-                            }
-
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-                    using (RegistryKey key4 = Registry.LocalMachine.OpenSubKey(@"Policies\Microsoft\Windows Defender Security Center\Notifications", true))
-                    {
-                        try
-                        {
-
-                            if (key4 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key4.CreateSubKey("DisableEnhancedNotifications");
-                                key4.SetValue("DisableEnhancedNotifications", 1, RegistryValueKind.DWord);
-                            }
-
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-                    using (RegistryKey key5 = Registry.CurrentUser.OpenSubKey(@"Policies\Microsoft\Windows\CurrentVersion\PushNotifications", true))
-                    {
-                        try
-
-                        {
-
-                            if (key5 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key5.CreateSubKey("NoToastApplicationNotification");
-                                key5.SetValue("NoToastApplicationNotification", 1, RegistryValueKind.DWord);
-                                key5.CreateSubKey("NoToastApplicationNotificationOnLockScreen");
-                                key5.SetValue("NoToastApplicationNotificationOnLockScreen", 1, RegistryValueKind.DWord);
-
-                            }
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-
-
-                    }
-                }
-
-
-            }
-            else
-            {
-                string[] keys = {
-                 @"SYSTEM\CurrentControlSet\Services\SecurityHealthService",
-                 @"SYSTEM\CurrentControlSet\Services\Sense",
-                 @"SYSTEM\CurrentControlSet\Services\wscsvc",
-                            };
-
-                foreach (string key in keys)
-                {
-                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
-                    {
-                        try
-                        {
-
-                            newKey.SetValue("Start", 2, RegistryValueKind.DWord);
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-
-                    using (RegistryKey key1 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows Defender", true))
-                    {
-                        try
-                        {
-
-                            if (key1 == null)
-                            {
-                            }
-                            else
-                            {
-                                key1.CreateSubKey("DisableAntiSpyware");
-                                key1.SetValue("DisableAntiSpyware", 0, RegistryValueKind.DWord);
-                                key1.CreateSubKey("DisableRoutinelyTakingAction");
-                                key1.SetValue("DisableRoutinelyTakingAction", 0, RegistryValueKind.DWord);
-                                key1.CreateSubKey("ServiceKeepAlive");
-                                key1.SetValue("ServiceKeepAlive", 0, RegistryValueKind.DWord);
-
-
-
-                            }
-
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-
-                    using (RegistryKey key2 = Registry.LocalMachine.OpenSubKey(@"Policies\Microsoft\Windows Defender\Real - Time Protection", true))
-                    {
-                        try
-                        {
-
-                            if (key2 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key2.CreateSubKey("DisableBehaviorMonitoring");
-                                key2.SetValue("DisableBehaviorMonitoring", 0, RegistryValueKind.DWord);
-                                key2.CreateSubKey("DisableIOAVProtection");
-                                key2.SetValue("DisableIOAVProtection", 0, RegistryValueKind.DWord);
-                                key2.CreateSubKey("DisableOnAccessProtection");
-                                key2.SetValue("DisableOnAccessProtection", 0, RegistryValueKind.DWord);
-                                key2.CreateSubKey("DisableRealtimeMonitoring");
-                                key2.SetValue("DisableRealtimeMonitoring", 0, RegistryValueKind.DWord);
-
-
-                            }
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-                    using (RegistryKey key3 = Registry.LocalMachine.OpenSubKey(@"Policies\Microsoft\Windows Defender\Reporting", true))
-                    {
-                        try
-                        {
-
-                            if (key3 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key3.CreateSubKey("DisableEnhancedNotifications");
-                                key3.SetValue("DisableEnhancedNotifications", 0, RegistryValueKind.DWord);
-
-
-                            }
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-                    using (RegistryKey key4 = Registry.LocalMachine.OpenSubKey(@"Policies\Microsoft\Windows Defender Security Center\Notifications", true)
-                    )
-                    {
-                        try
-                        {
-
-                            if (key4 == null)
-                            {
-                            }
-                            else
-                            {
-                                key4.CreateSubKey("DisableEnhancedNotifications");
-                                key4.SetValue("DisableEnhancedNotifications", 0, RegistryValueKind.DWord);
-
-
-                            }
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-                    using (RegistryKey key5 = Registry.CurrentUser.OpenSubKey(@"Policies\Microsoft\Windows\CurrentVersion\PushNotifications", true))
-                    {
-                        try
-                        {
-
-                            if (key5 == null)
-                            {
-
-                            }
-                            else
-                            {
-                                key5.CreateSubKey("NoToastApplicationNotification");
-                                key5.SetValue("NoToastApplicationNotification", 0, RegistryValueKind.DWord);
-                                key5.CreateSubKey("NoToastApplicationNotificationOnLockScreen");
-                                key5.SetValue("NoToastApplicationNotificationOnLockScreen", 0, RegistryValueKind.DWord);
-
-
-                            }
-
-                        }
-                        catch (Exception)
-                        {
-
-                        }
-                    }
-
-
-                }
-
-
-
 
             }
 
