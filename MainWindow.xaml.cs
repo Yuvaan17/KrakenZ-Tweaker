@@ -30,7 +30,7 @@ namespace KrakenZ_Tweaker
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("This program must be run as an administrator! \n\n" + ex.ToString());
+                    MessageBox.Show("This program must be run as an administrator! \n\n" + ex.ToString());
                 }
             }
 
@@ -70,6 +70,7 @@ namespace KrakenZ_Tweaker
         private readonly UserControl2 UC2 = new UserControl2();
         private readonly UserControl3 UC3 = new UserControl3();
         private readonly UserControl4 UC4 = new UserControl4();
+        private readonly UserControl5 UC5 = new UserControl5();
 
 
 
@@ -80,6 +81,7 @@ namespace KrakenZ_Tweaker
                 User_Control.Children.Remove(UC2);
                 User_Control.Children.Remove(UC3);
                 User_Control.Children.Remove(UC4);
+                User_Control.Children.Remove(UC5);
                 User_Control.Children.Add(defaultUC);
             }
             catch(Exception)
@@ -95,6 +97,7 @@ namespace KrakenZ_Tweaker
                 User_Control.Children.Remove(defaultUC);
                 User_Control.Children.Remove(UC3);
                 User_Control.Children.Remove(UC4);
+                User_Control.Children.Remove(UC5);
                 User_Control.Children.Add(UC2);
             }
             catch(Exception) { }
@@ -107,6 +110,7 @@ namespace KrakenZ_Tweaker
                 User_Control.Children.Remove(defaultUC);
                 User_Control.Children.Remove(UC2);
                 User_Control.Children.Remove(UC4);
+                User_Control.Children.Remove(UC5);
                 User_Control.Children.Add(UC3);
             }catch(Exception){ }
         }
@@ -119,7 +123,23 @@ namespace KrakenZ_Tweaker
                 User_Control.Children.Remove(defaultUC);
                 User_Control.Children.Remove(UC2);
                 User_Control.Children.Remove(UC3);
+                User_Control.Children.Remove(UC5);
                 User_Control.Children.Add(UC4);
+            }
+            catch (Exception) { }
+
+        }
+
+        private void Startup_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                User_Control.Children.Remove(defaultUC);
+                User_Control.Children.Remove(UC2);
+                User_Control.Children.Remove(UC3);
+                User_Control.Children.Remove(UC4);
+                User_Control.Children.Add(UC5);
             }
             catch (Exception) { }
 

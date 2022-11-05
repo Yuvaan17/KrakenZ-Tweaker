@@ -129,16 +129,16 @@ namespace KrakenZ_Tweaker.UserControls
                     {
                         file.Delete();
                     }
-                    catch (Exception) { }
+                    catch (Exception) {  }
                 }
                 foreach (DirectoryInfo directory in dir)
                 {
                     try
                     {
-                        directory.Delete();
+                        directory.Delete(true);
                     }
 
-                    catch (Exception) { }
+                    catch (Exception ) {  }
                 }
                 foreach (FileInfo file in files2)
                 {
@@ -146,16 +146,16 @@ namespace KrakenZ_Tweaker.UserControls
                     {
                         file.Delete();
                     }
-                    catch (Exception) { }
+                    catch (Exception ) { }
                 }
                 foreach (DirectoryInfo directory in dir2)
                 {
                     try
                     {
-                        directory.Delete();
+                        directory.Delete(true);
                     }
 
-                    catch (Exception) { }
+                    catch (Exception ) {  }
                 }
                 foreach (FileInfo file in files3)
                 {
@@ -163,18 +163,19 @@ namespace KrakenZ_Tweaker.UserControls
                     {
                         file.Delete();
                     }
-                    catch (Exception) { }
+                    catch (Exception ) {  }
                 }
                 foreach (DirectoryInfo directory in dir3)
                 {
                     try
                     {
-                        directory.Delete();
+                        directory.Delete(true);
                     }
 
                     catch (Exception) { }
                 }
-                MessageBox.Show("All the junk files were deleted successfully");
+
+                MessageBox.Show("All the junk files were deleted successfully! However you may still see a few files left out because they are in use by the system.");
                 Junk_Files.Items.Clear();
                 Final.Text = "File size to be cleared:";
 
@@ -187,6 +188,7 @@ namespace KrakenZ_Tweaker.UserControls
             }
 
         }
+
         public static string ExecuteCommand(string command)
         {
 

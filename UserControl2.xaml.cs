@@ -64,7 +64,21 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\stisvc",
        @"SYSTEM\CurrentControlSet\Services\PcaSvc",
        @"SYSTEM\CurrentControlSet\Services\Wecsvc",
-       @"SYSTEM\CurrentControlSet\Services\WbioSrvc",
+       @"SYSTEM\CurrentControlSet\Services\tzautoupdate",
+        @"SYSTEM\CurrentControlSet\Services\BITS",
+        @"SYSTEM\CurrentControlSet\Services\CDPSvc",
+        @"SYSTEM\CurrentControlSet\Services\DusmSvc",
+        @"SYSTEM\CurrentControlSet\Services\HomeGroupListener",
+        @"SYSTEM\CurrentControlSet\Services\HomeGroupProvider",
+        @"SYSTEM\CurrentControlSet\Services\SmsRouter",
+        @"SYSTEM\CurrentControlSet\Services\pla",
+        @"SYSTEM\CurrentControlSet\Services\RasAuto",
+        @"SYSTEM\CurrentControlSet\Services\RasMan",
+       @"SYSTEM\CurrentControlSet\Services\SessionEnv",
+       @"SYSTEM\CurrentControlSet\Services\WalletService",
+         @"SYSTEM\CurrentControlSet\Services\WSearch",
+           @"SYSTEM\CurrentControlSet\Services\WpnUserService",
+           @"SYSTEM\CurrentControlSet\Services\BluetoothUserService",
 
 
 
@@ -78,26 +92,21 @@ namespace KrakenZ_Tweaker.UserControls
 
             foreach (var key in keys1)
             {
-                var rkey = Registry.LocalMachine.OpenSubKey(key, false);
-
-                // If the GetValue call throws, nothing is added to "dict2
                 try
                 {
+                    using (
+                    var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+                    using (var rkey = hklm.OpenSubKey(key, RegistryKeyPermissionCheck.ReadWriteSubTree))
 
-                    if (rkey == null)
+
+
                     {
-                        dict2.Add(key, 0);
-                    }
-                    else
-                    {
-                        dict2.Add(key, Convert.ToUInt32(rkey.GetValue("value", RegistryValueKind.DWord)));
+                        dict2.Add(key, Convert.ToUInt32(rkey.GetValue("value")));
                     }
                 }
-                catch (Exception)
-                {
-
-                }
-                finally { rkey?.Dispose(); }
+                catch (Exception) { }
+                 
+          
 
 
 
@@ -148,7 +157,7 @@ namespace KrakenZ_Tweaker.UserControls
             {
                 Disable_Maps_Broker.IsChecked = true;
             }
-            if (dict.ElementAt(8).Value + dict.ElementAt(9).Value == 8)
+            if (dict.ElementAt(8).Value + dict.ElementAt(9).Value + dict.ElementAt(54).Value == 12)
             {
                 Disable_Bluethooth.IsChecked = true;
             }
@@ -156,7 +165,7 @@ namespace KrakenZ_Tweaker.UserControls
             {
                 Disable_Diagnostics.IsChecked = true;
             }
-            if (dict.ElementAt(16).Value + dict.ElementAt(17).Value + dict.ElementAt(18).Value + dict.ElementAt(19).Value + dict.ElementAt(20).Value + dict.ElementAt(21).Value + dict.ElementAt(22).Value + dict.ElementAt(23).Value + dict.ElementAt(24).Value + dict.ElementAt(25).Value + dict.ElementAt(26).Value + dict.ElementAt(27).Value + dict.ElementAt(28).Value + dict.ElementAt(29).Value + dict.ElementAt(30).Value + dict.ElementAt(31).Value + dict.ElementAt(32).Value + dict.ElementAt(33).Value + dict.ElementAt(34).Value + dict.ElementAt(35).Value + dict.ElementAt(36).Value + dict.ElementAt(36).Value + dict.ElementAt(37).Value + dict.ElementAt(38).Value + dict.ElementAt(39).Value == 96)
+            if (dict.ElementAt(16).Value + dict.ElementAt(17).Value + dict.ElementAt(18).Value + dict.ElementAt(19).Value + dict.ElementAt(20).Value + dict.ElementAt(21).Value + dict.ElementAt(22).Value + dict.ElementAt(23).Value + dict.ElementAt(24).Value + dict.ElementAt(25).Value + dict.ElementAt(26).Value + dict.ElementAt(27).Value + dict.ElementAt(28).Value + dict.ElementAt(29).Value + dict.ElementAt(30).Value + dict.ElementAt(31).Value + dict.ElementAt(32).Value + dict.ElementAt(33).Value + dict.ElementAt(34).Value + dict.ElementAt(35).Value + dict.ElementAt(36).Value + dict.ElementAt(36).Value + dict.ElementAt(37).Value + dict.ElementAt(38).Value + dict.ElementAt(39).Value + dict.ElementAt(40).Value + dict.ElementAt(41).Value + dict.ElementAt(42).Value + dict.ElementAt(43).Value + dict.ElementAt(44).Value + dict.ElementAt(45).Value + dict.ElementAt(46).Value + dict.ElementAt(47).Value + dict.ElementAt(48).Value + dict.ElementAt(49).Value + dict.ElementAt(50).Value + dict.ElementAt(51).Value + dict.ElementAt(52).Value + dict.ElementAt(53).Value == 152)
             {
                 Disable_Services.IsChecked = true;
             }
@@ -353,7 +362,7 @@ namespace KrakenZ_Tweaker.UserControls
                 {
                     try
                     {
-                        key7.SetValue("Start", 4, RegistryValueKind.DWord);
+                        key7.SetValue("Start", 3, RegistryValueKind.DWord);
 
                     }
                     catch (Exception)
@@ -373,6 +382,7 @@ namespace KrakenZ_Tweaker.UserControls
                 string[] keys = {
                 @"SYSTEM\CurrentControlSet\Services\BTAGService",
                 @"SYSTEM\CurrentControlSet\Services\bthserv",
+                  @"SYSTEM\CurrentControlSet\Services\BluetoothUserService",
 
                             };
 
@@ -397,6 +407,7 @@ namespace KrakenZ_Tweaker.UserControls
                 string[] keys = {
                 @"SYSTEM\CurrentControlSet\Services\BTAGService",
                 @"SYSTEM\CurrentControlSet\Services\bthserv",
+                  @"SYSTEM\CurrentControlSet\Services\BluetoothUserService",
 
                             };
 
@@ -534,6 +545,22 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\stisvc",
        @"SYSTEM\CurrentControlSet\Services\PcaSvc",
        @"SYSTEM\CurrentControlSet\Services\Wecsvc",
+        @"SYSTEM\CurrentControlSet\Services\tzautoupdate",
+        @"SYSTEM\CurrentControlSet\Services\BITS",
+        @"SYSTEM\CurrentControlSet\Services\CDPSvc",
+        @"SYSTEM\CurrentControlSet\Services\DusmSvc",
+        @"SYSTEM\CurrentControlSet\Services\WdiSystemHost",
+        @"SYSTEM\CurrentControlSet\Services\HomeGroupListener",
+        @"SYSTEM\CurrentControlSet\Services\HomeGroupProvider",
+        @"SYSTEM\CurrentControlSet\Services\SmsRouter",
+        @"SYSTEM\CurrentControlSet\Services\pla",
+        @"SYSTEM\CurrentControlSet\Services\RasAuto",
+        @"SYSTEM\CurrentControlSet\Services\RasMan",
+       @"SYSTEM\CurrentControlSet\Services\SessionEnv",
+       @"SYSTEM\CurrentControlSet\Services\WalletService",
+         @"SYSTEM\CurrentControlSet\Services\WSearch",
+           @"SYSTEM\CurrentControlSet\Services\WpnUserService",
+      
 
                             };
 
@@ -591,6 +618,22 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\stisvc",
        @"SYSTEM\CurrentControlSet\Services\PcaSvc",
        @"SYSTEM\CurrentControlSet\Services\Wecsvc",
+        @"SYSTEM\CurrentControlSet\Services\tzautoupdate",
+        @"SYSTEM\CurrentControlSet\Services\BITS",
+        @"SYSTEM\CurrentControlSet\Services\CDPSvc",
+        @"SYSTEM\CurrentControlSet\Services\DusmSvc",
+        @"SYSTEM\CurrentControlSet\Services\WdiSystemHost",
+        @"SYSTEM\CurrentControlSet\Services\HomeGroupListener",
+        @"SYSTEM\CurrentControlSet\Services\HomeGroupProvider",
+        @"SYSTEM\CurrentControlSet\Services\SmsRouter",
+        @"SYSTEM\CurrentControlSet\Services\pla",
+        @"SYSTEM\CurrentControlSet\Services\RasAuto",
+        @"SYSTEM\CurrentControlSet\Services\RasMan",
+       @"SYSTEM\CurrentControlSet\Services\SessionEnv",
+       @"SYSTEM\CurrentControlSet\Services\WalletService",
+         @"SYSTEM\CurrentControlSet\Services\WSearch",
+           @"SYSTEM\CurrentControlSet\Services\WpnUserService",
+    
 
                             };
 
@@ -685,7 +728,23 @@ namespace KrakenZ_Tweaker.UserControls
         {
             if (Game_DVR.IsChecked == true)
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"System\GameConfigStore", true))
+                using (
+                    var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+                using (var key = hklm.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\BcastDVRUserService", RegistryKeyPermissionCheck.ReadWriteSubTree))
+                {
+                    try
+                    {
+                            key.SetValue("Start", 4, RegistryValueKind.DWord);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                using (
+                   var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+                using (var key = hklm.OpenSubKey(@"System\GameConfigStore", RegistryKeyPermissionCheck.ReadWriteSubTree))
+               
                 {
                     try
                     {
@@ -712,7 +771,11 @@ namespace KrakenZ_Tweaker.UserControls
 
                 try
                 {
-                    using (RegistryKey key1 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR", true))
+                    using (
+                   var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+                    using (var key1 = hklm.OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR", RegistryKeyPermissionCheck.ReadWriteSubTree))
+                    
+                    {
                         if (key1 == null)
                         {
 
@@ -724,6 +787,7 @@ namespace KrakenZ_Tweaker.UserControls
 
 
                         }
+                    }
 
                 }
                 catch (Exception)
@@ -731,7 +795,10 @@ namespace KrakenZ_Tweaker.UserControls
 
                 }
 
-                using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\GameDVR", true))
+                using (
+                  var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+                using (var key2 = hklm.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\GameDVR", RegistryKeyPermissionCheck.ReadWriteSubTree))
+               
                 {
                     try
                     {
@@ -759,7 +826,23 @@ namespace KrakenZ_Tweaker.UserControls
             }
             else
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"System\GameConfigStore", true))
+                using (
+                     var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+                using (var key = hklm.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\BcastDVRUserService", RegistryKeyPermissionCheck.ReadWriteSubTree))
+                {
+                    try
+                    {
+                        key.SetValue("Start", 3, RegistryValueKind.DWord);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                }
+                using (
+                   var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+                using (var key = hklm.OpenSubKey(@"System\GameConfigStore", RegistryKeyPermissionCheck.ReadWriteSubTree))
+
                 {
                     try
                     {
@@ -783,14 +866,16 @@ namespace KrakenZ_Tweaker.UserControls
                     }
                 }
 
-                using (RegistryKey key1 = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR", true))
-                {
-                    try
-                    {
 
+                try
+                {
+                    using (
+                   var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+                    using (var key1 = hklm.OpenSubKey(@"SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR", RegistryKeyPermissionCheck.ReadWriteSubTree))
+
+                    {
                         if (key1 == null)
                         {
-                            ;
 
                         }
                         else
@@ -800,15 +885,18 @@ namespace KrakenZ_Tweaker.UserControls
 
 
                         }
-
                     }
-                    catch (Exception)
-                    {
 
-                    }
+                }
+                catch (Exception)
+                {
+
                 }
 
-                using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\GameDVR", true))
+                using (
+                  var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+                using (var key2 = hklm.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\GameDVR", RegistryKeyPermissionCheck.ReadWriteSubTree))
+
                 {
                     try
                     {
@@ -835,9 +923,12 @@ namespace KrakenZ_Tweaker.UserControls
 
             }
 
+
+        }
+
         }
     }
-}
+
 
 
 

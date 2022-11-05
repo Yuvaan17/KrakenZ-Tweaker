@@ -52,60 +52,102 @@
     <Grid Background="#FF4E4E4E" Margin="0,0,0,0" >
 
 
-        <StackPanel HorizontalAlignment="Left" Background="#FF121820" Height="700" Width="300">
-            <Image  HorizontalAlignment="Center" Margin="0,30,0,12" Height="125" Width="140" Source="/KrakenZ Tweaker Logo.ico"/>
-            <TextBlock Margin="0,0,0,9" TextWrapping="Wrap" Text="  KrakenZ Tweaker" FontFamily="Montserrat" FontSize="30" Foreground="White" Height="34" Width="257"/>
-            <Separator Width="215" Margin="0,20,0,0" Height="8" Background="Gray"/>
+        <Grid HorizontalAlignment="Left" Background="#FF121820" Height="700" Width="300">
+            <Image  HorizontalAlignment="Left" Margin="74,32,0,543" Height="125" Width="140" Source="/KrakenZ Tweaker Logo.ico"/>
+            <TextBlock Margin="20,182,23,476" TextWrapping="Wrap" Text="KrakenZ Tweaker" FontFamily="Comic Sans MS" FontSize="30" Foreground="White" Width="257"/>
+            <Separator Margin="20,224,22,438" Background="Gray" RenderTransformOrigin="0.5,0.5">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
             <RadioButton x:Name="Restore_Point"
                  Style="{StaticResource RadioButtonStyle}"
-                 Margin="0,40,0,0"
+                 Margin="0,274,0,378"
+                         Width="279"
                  Height="47"
-                 Width="279"
                  BorderBrush="{x:Null}"
                  Foreground="White"
                  FontFamily="Bahnschrift"
                  FontSize="25"
-                 Content="Restore Point"
+                 
                  Cursor="Hand"
-                Click="Restore_Point_Click" />
-            <RadioButton x:Name="Disable_Unnecessary_Services"
-                 Style="{StaticResource RadioButtonStyle}"
-                 Margin="0,5,0,0"
-                 Height="47"
-                 Width="279"
-                 BorderBrush="{x:Null}"
-                 Foreground="White"
-                 FontFamily="Bahnschrift"
-                 FontSize="25"
-                 Content="Disable Services"
-                 Cursor="Hand"
-               Click="Disable_Unnecessary_Services_Click" />
-            <RadioButton x:Name="Clear_Junk_Files"
-                 Style="{StaticResource RadioButtonStyle}"
-                          Margin="0,5,0,0"
-                 Height="47"
-                 Width="279"
-                 BorderBrush="{x:Null}"
-                 Foreground="White"
-                 FontFamily="Bahnschrift"
-                 FontSize="25"
-                 Content="Clear Junk Files"
-                 Cursor="Hand"
-                 Click="Clear_Junk_Files_Click"/>
-            <RadioButton x:Name="Useful_Optimization"
-                 Style="{StaticResource RadioButtonStyle}"
-                         Margin="0,5,0,0"
-                 Height="47"
-                 Width="279"
-                 BorderBrush="{x:Null}"
-                 Foreground="White"
-                 FontFamily="Bahnschrift"
-                 FontSize="25"
-                 Content="Useful Optimizations"
-                 Cursor="Hand"
-                 Click="Useful_Optimization_Click"/>
+                Click="Restore_Point_Click" >
+                <Grid>
+                    <Image Source="/Images/Restore Icon.png" Height="40" Width="263" HorizontalAlignment="Left" Margin="6,0,0,0"/>
+                    <TextBlock FontSize="27" TextWrapping="Wrap" FontFamily="Bahnschrift" Margin="60,4,14,-4">Restore Point</TextBlock>
+                </Grid>
 
-        </StackPanel>
+            </RadioButton>
+            <RadioButton  Width="279" x:Name="Disable_Unnecessary_Services"
+                 Style="{StaticResource RadioButtonStyle}"
+                 Margin="0,327,0,326"
+                 Height="47"
+                 BorderBrush="{x:Null}"
+                 Foreground="White"
+                 FontFamily="Bahnschrift"
+                 FontSize="25"
+                 
+                 Cursor="Hand"
+               Click="Disable_Unnecessary_Services_Click" >
+                <Grid>
+                    <Image Source="/Images/Disable.png" Height="40" Width="263" HorizontalAlignment="Left" Margin="6,0,0,0"/>
+                    <TextBlock FontSize="27" TextWrapping="Wrap" FontFamily="Bahnschrift" Margin="60,4,14,-4">Disable Services</TextBlock>
+                </Grid>
+            </RadioButton>
+            <RadioButton Width="279" x:Name="Clear_Junk_Files"
+                 Style="{StaticResource RadioButtonStyle}"
+                          Margin="0,433,0,220"
+                 Height="47"
+                 BorderBrush="{x:Null}"
+                 Foreground="White"
+                 FontFamily="Bahnschrift"
+                 FontSize="25"
+                 
+                 Cursor="Hand"
+                 Click="Clear_Junk_Files_Click">
+                <Grid>
+                    <Image Source="/Images/Junk.png" Height="40" Width="263" HorizontalAlignment="Left" Margin="6,0,0,0"/>
+                    <TextBlock FontSize="27" TextWrapping="Wrap" FontFamily="Bahnschrift" Margin="60,4,14,-4">Clear Junk Files</TextBlock>
+                </Grid>
+            </RadioButton>
+            <RadioButton Width="279" x:Name="Startup"
+                 Style="{StaticResource RadioButtonStyle}"
+                          Margin="0,486,0,168"
+                 Height="47"
+                 BorderBrush="{x:Null}"
+                 Foreground="White"
+                 FontFamily="Bahnschrift"
+                 FontSize="25"
+                 
+                 Cursor="Hand"
+                 Click="Startup_Click">
+                <Grid>
+                    <Image Source="/Images/Startup.png" Width="266" HorizontalAlignment="Left" Margin="8,2,0,0" />
+                    <TextBlock FontSize="27" TextWrapping="Wrap" FontFamily="Bahnschrift" Margin="68,4,6,-4">Startup apps</TextBlock>
+                </Grid>
+            </RadioButton>
+            <RadioButton Width="279" x:Name="Useful_Optimization"
+                 Style="{StaticResource RadioButtonStyle}"
+                         Margin="0,380,0,272"
+                 Height="47"
+                 BorderBrush="{x:Null}"
+                 Foreground="White"
+                 FontFamily="Bahnschrift"
+                 FontSize="25"
+                 Cursor="Hand"
+                 Click="Useful_Optimization_Click">
+                <Grid>
+                    <Image Source="/Images/Tweak.png" Height="40" Width="263" HorizontalAlignment="Left" Margin="6,0,0,0"/>
+                    <TextBlock FontSize="27" TextWrapping="Wrap" FontFamily="Bahnschrift" Margin="60,4,14,-4">Useful Tweaks</TextBlock>
+                </Grid>
+            </RadioButton>
+
+        </Grid>
         <StackPanel  x:Name="User_Control" Height="700" Width="700" Margin="298,-16,2,0">
             <StackPanel.Triggers>
 

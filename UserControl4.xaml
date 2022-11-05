@@ -63,12 +63,63 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <StackPanel>
-        <TextBlock Foreground="Gold" TextWrapping="Wrap" Text="Useful Windows Optimizations" FontFamily="Bahnschrift SemiBold" FontSize="50" Height="137" Margin="0,40,0,0"  />
-        <CheckBox Margin="0,0,0,0" Name ="Optimize_Registry" Click="Optimize_Registry_Click"  FontSize="24" Foreground="White" Width="614" >Registry Tweaks</CheckBox>
-        
+    <Grid>
+        <TextBlock Foreground="Goldenrod" TextWrapping="Wrap" Text=" Useful Windows Tweaks" FontFamily="Bahnschrift SemiBold" FontSize="60" Height="100" Margin="7,40,8,560"  />
+        <CheckBox ToolTip="Increases overall system responsiveness by decreasing processes kill time and menu show delay! &#x0a; It also runs some other tweaks that will make your windows more responsive and faster. " Margin="23,254,23,402" Name ="Optimize_Registry" Click="Optimize_Registry_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >Increase Responsiveness</CheckBox>
+        <CheckBox ToolTip="Automatically searches for the amount of RAM installed on your system &#x0a; and optimizes your PC according to that. " Margin="23,300,23,356" Name ="Optimize_Ram" Click="Optimize_Ram_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >Optimize RAM</CheckBox>
+        <CheckBox ToolTip="Decreases latency on your Windows." Margin="23,208,23,448" x:Name ="Latency_Optimizations" Click="Latency_Optimizations_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >
+            Latency Optimizations
+        </CheckBox>
+        <CheckBox ToolTip="Decreases latency on your Windows." Margin="23,346,23,314" x:Name ="Disable_Ads" Click="Disable_Ads_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >
+            Disable All Windows Ads
+        </CheckBox>
 
-    </StackPanel>
+        <Button ToolTip="Automatically determines your storage device and optimizes &#x0a; it according to your HDD or SSD" Click="OptimizeHDDSSD_Click"  x:Name="OptimizeHDDSSD" FontFamily="Arial"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="78" Width="275" FontSize="25" Cursor="Hand" Margin="404,214,0,0"  >
+            <Grid>
+                <Image Source="/Images/HDD Icon.png" Height="56" Width="263" HorizontalAlignment="Left"/>
+                <TextBlock FontSize="25" TextWrapping="Wrap" FontFamily="Arial" Margin="74,0,0,0">Optimize HDD/SSD</TextBlock>
+            </Grid>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+
+                    <Setter Property="Background" Value="DarkOrange"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter x:Name="Y" Property="Background" Value="Orange"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+
+        </Button>
+
+        <TextBlock HorizontalAlignment="Left" Margin="1011,173,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Separator Margin="20,118,22,544" Background="LightGray" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+        </Separator>
+
+    </Grid>
 
 
 

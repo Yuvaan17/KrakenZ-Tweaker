@@ -64,16 +64,20 @@
         </Style>
     </UserControl.Resources>
     <StackPanel HorizontalAlignment="Left" Width="700" Height="700" Margin="11,0,0,0" >
-        <TextBlock Foreground="Gold" TextWrapping="Wrap" Text="Disable All the Services You Don't Use!" FontFamily="Bahnschrift SemiBold" FontSize="50" Height="162" Margin="0,40,0,0"  />
+        <TextBlock Foreground="Gold" TextWrapping="Wrap" Text="Disable All the Services You Don't Use!" FontFamily="Bahnschrift SemiBold" FontSize="50" Height="115" Margin="0,40,0,0"  />
+        <Separator Margin="0,10,0,20" Background="LightGray" RenderTransformOrigin="0.5,0.5" Height="55" Width="676">
+         
+        </Separator>
         <CheckBox Click ="Disable_Xbox_Services_Click" ToolTip="Disables All XBOX services. Do not disable if you have use &#x0a; XBOX achievements, Gamerscore, Etc." Margin="0,4,0,0"  Name="Disable_Xbox_Services" FontSize="24" Foreground="White" >Xbox Services</CheckBox>
         <CheckBox Click="Disable_Windows_Insider_Click" ToolTip="Disables Windows Insider Service. Do not disable if you have opted &#x0a; for the Windows Insider Program." Margin="0,4,0,0" Name="Disable_Windows_Insider" FontSize="24" Foreground="White">Windows Insider</CheckBox>
         <CheckBox Click ="Disable_Print_Services_Click"  ToolTip="Disables all Print services. You will not be able to use your printer if you disable it." Margin="0,4,0,0" Name="Disable_Print_Services"  FontSize="24" Foreground="White" >Print Services</CheckBox>
         <CheckBox Click="Disable_Maps_Broker_Click" ToolTip="Disables Downloaded Maps Manager Service. If you download offline maps, &#x0a; this service runs in the background to keep them up to date." Margin="0,4,0,0" Name ="Disable_Maps_Broker"  FontSize="24" Foreground="White" >Maps Manager</CheckBox>
         <CheckBox Click="Disable_Bluethooth_Click" ToolTip="Disables all Bluethooth Services. If you use any bluethooth devices, you &#x0a; will not be able to use your them if you disable this services. " Margin="0,4,0,0" Name="Disable_Bluethooth" FontSize="24" Foreground="White" >Bluetooth Services</CheckBox>
         <CheckBox Click="Disable_Diagnostics_Click" ToolTip="Disables all telementory services. Telementory services are those services by which Microsoft collects data to &#x0a; improve user experience. It is safe to disable this without any problems!"  Margin="0,4,0,0" Name="Disable_Diagnostics" FontSize="24" Foreground="White" >Telementory Services</CheckBox>
-        <CheckBox Click="Disable_Services_Click" ToolTip="Disable over 23 unnecessary services which run in the Backround for no use.&#x0a; You can safely disable these services!" Margin="0,4,0,0" Name="Disable_Services"  FontSize="24" Foreground="White" >Extra Unnecessary Services</CheckBox>
+        <CheckBox Click="Disable_Services_Click" ToolTip="Disable over 35 unnecessary services which run in the Backround for no use.&#x0a; You can safely disable these services!" Margin="0,4,0,0" Name="Disable_Services"  FontSize="24" Foreground="White" >Extra Unnecessary Services</CheckBox>
         <CheckBox Click="Biometric_Services_Click" ToolTip="Disables Windows Biometric Service. The Windows Biometric service is only useful if you actually &#x0a; use system features or applications that require a fingerprint or facial scanning. &#x0a; You can safely disable this service if your computer lacks the hardware even to utilize those features." Margin="0,4,0,0" Name="Biometric_Services"  FontSize="24" Foreground="White" >Biometric Service</CheckBox>
         <CheckBox Click="Game_DVR_Click" ToolTip="This will disable the XBOX recording feature which is inbuilt in Windows.&#x0a; Do not disable if you use this recorder to record your game clips, screen, etc." Margin="0,4,0,0" Name ="Game_DVR"  FontSize="24" Foreground="White" >Xbox Game bar</CheckBox>
+        
 
 
 
