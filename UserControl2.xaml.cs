@@ -92,8 +92,7 @@ namespace KrakenZ_Tweaker.UserControls
 
             foreach (var key in keys1)
             {
-                try
-                {
+                
                     using (
                     var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
                     using (var rkey = hklm.OpenSubKey(key, RegistryKeyPermissionCheck.ReadWriteSubTree))
@@ -101,10 +100,20 @@ namespace KrakenZ_Tweaker.UserControls
 
 
                     {
-                        dict2.Add(key, Convert.ToUInt32(rkey.GetValue("value")));
+                    try
+                    {
+                        if (rkey == null)
+                        {
+                            dict2.Add(key, 1);
+                        }
+                        else
+                        {
+                            dict2.Add(key, Convert.ToUInt32(rkey.GetValue("value")));
+                        }
+                    }catch(Exception)
+                    { }
                     }
-                }
-                catch (Exception) { }
+             
                  
           
 
@@ -117,24 +126,26 @@ namespace KrakenZ_Tweaker.UserControls
             foreach (var key in keys)
             {
 
-                var rkey = Registry.LocalMachine.OpenSubKey(key, false);
-                try
+                using (var rkey = Registry.LocalMachine.OpenSubKey(key, false))
                 {
-
-                    if (rkey == null)
+                    try
                     {
-                        dict.Add(key, 0);
-                    }
-                    else
-                    {
-                        dict.Add(key, Convert.ToUInt32(rkey.GetValue("Start", RegistryValueKind.DWord)));
-                    }
-                }
-                catch (Exception)
-                {
 
+                        if (rkey == null)
+                        {
+                            dict.Add(key, 0);
+                        }
+                        else
+                        {
+                            dict.Add(key, Convert.ToUInt32(rkey.GetValue("Start", RegistryValueKind.DWord)));
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+                    finally { rkey?.Dispose(); }
                 }
-                finally { rkey?.Dispose(); }
 
 
 
