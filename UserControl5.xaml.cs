@@ -26,6 +26,7 @@ namespace KrakenZ_Tweaker
         {
 
             InitializeComponent();
+
             var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
             RegistryKey HKCU = hklm.OpenSubKey(LocalMachineRun);
             RegistryKey HKCU1 = hklm.OpenSubKey(LocalMachineRunOnce);
@@ -33,34 +34,38 @@ namespace KrakenZ_Tweaker
             RegistryKey HKCU3 = hklm.OpenSubKey(LocalMachineRunOnceWow);
             RegistryKey HKCU4 = Registry.CurrentUser.OpenSubKey(CurrentUserRun);
             RegistryKey HKCU5 = Registry.CurrentUser.OpenSubKey(CurrentUserRunOnce);
+            try
+            {
 
-            foreach (string Programs in HKCU.GetValueNames())
-            {
-                Startup_Apps.Items.Add(Programs);
-            }
-            foreach (string Programs in HKCU1.GetValueNames())
-            {
-                Startup_Apps.Items.Add(Programs);
-            }
-            foreach (string Programs in HKCU2.GetValueNames())
-            {
-                Startup_Apps.Items.Add(Programs);
-            }
-            foreach (string Programs in HKCU3.GetValueNames())
-            {
-                Startup_Apps.Items.Add(Programs);
-            }
-            foreach (string Programs in HKCU4.GetValueNames())
-            {
-                Startup_Apps.Items.Add(Programs);
-            }
-            foreach (string Programs in HKCU5.GetValueNames())
-            {
-                Startup_Apps.Items.Add(Programs);
-            }
-            HKCU.Close();
-            HKCU1.Close(); HKCU2.Close(); HKCU3.Close(); HKCU4.Close();
+                foreach (string Programs in HKCU.GetValueNames())
+                {
+                    Startup_Apps.Items.Add(Programs);
+                }
+                foreach (string Programs in HKCU1.GetValueNames())
+                {
+                    Startup_Apps.Items.Add(Programs);
+                }
+                foreach (string Programs in HKCU2.GetValueNames())
+                {
+                    Startup_Apps.Items.Add(Programs);
+                }
+                foreach (string Programs in HKCU3.GetValueNames())
+                {
+                    Startup_Apps.Items.Add(Programs);
+                }
+                foreach (string Programs in HKCU4.GetValueNames())
+                {
+                    Startup_Apps.Items.Add(Programs);
+                }
+                foreach (string Programs in HKCU5.GetValueNames())
+                {
+                    Startup_Apps.Items.Add(Programs);
+                }
+                HKCU.Close();
+                HKCU1.Close(); HKCU2.Close(); HKCU3.Close(); HKCU4.Close();
 
+            }catch(Exception ex)
+            { MessageBox.Show(Convert.ToString(ex)); }
         }
         internal static readonly string LocalMachineRun = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
         internal static readonly string LocalMachineRunOnce = "Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce";
