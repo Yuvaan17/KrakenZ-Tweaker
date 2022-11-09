@@ -95,7 +95,7 @@ namespace KrakenZ_Tweaker.UserControls
                 
                     using (
                     var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
-                    using (var rkey = hklm.OpenSubKey(key, RegistryKeyPermissionCheck.ReadWriteSubTree))
+                    using (var rkey = hklm.OpenSubKey(key, false))
 
 
 
