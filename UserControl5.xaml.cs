@@ -26,6 +26,7 @@ namespace KrakenZ_Tweaker
         {
 
             InitializeComponent();
+            
 
             var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
             RegistryKey HKCU = hklm.OpenSubKey(LocalMachineRun);
@@ -64,8 +65,8 @@ namespace KrakenZ_Tweaker
                 HKCU.Close();
                 HKCU1.Close(); HKCU2.Close(); HKCU3.Close(); HKCU4.Close();
 
-            }catch(Exception ex)
-            { MessageBox.Show(Convert.ToString(ex)); }
+            }catch(Exception)
+            { }
         }
         internal static readonly string LocalMachineRun = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
         internal static readonly string LocalMachineRunOnce = "Software\\Microsoft\\Windows\\CurrentVersion\\RunOnce";
@@ -90,25 +91,45 @@ namespace KrakenZ_Tweaker
         List<string> list = new List<string>();
         string[] selected;
 
-
+       
         private void Clear_Startup_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
-                RegistryKey startupKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(LocalMachineRun, true);
-                RegistryKey startupKey1 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(LocalMachineRunOnce, true);
-                RegistryKey startupKey2 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(LocalMachineRunWoW, true);
-                RegistryKey startupKey3 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(LocalMachineRunOnceWow, true);
-                RegistryKey startupKey4 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(CurrentUserRun, true);
-                RegistryKey startupKey5 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(CurrentUserRunOnce, true);
-                foreach (string AppName in selected)
+                if (Startup_Apps.SelectedIndex == -1)
                 {
-                    startupKey.DeleteValue(AppName, false);
+                    MessageBox.Show("There is no startup item selected", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
-                startupKey.Close();
+                else
+                {
+
+                   MessageBoxResult result = MessageBox.Show("Are you sure that you want to remove the selcted startup items from your PC?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+                        RegistryKey startupKey = hklm.OpenSubKey(LocalMachineRun, true);
+                        RegistryKey startupKey1 = hklm.OpenSubKey(LocalMachineRunOnce, true);
+                        RegistryKey startupKey2 = hklm.OpenSubKey(LocalMachineRunWoW, true);
+                        RegistryKey startupKey3 = hklm.OpenSubKey(LocalMachineRunOnceWow, true);
+                        RegistryKey startupKey4 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(CurrentUserRun, true);
+                        RegistryKey startupKey5 = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(CurrentUserRunOnce, true);
+
+
+
+                        foreach (string AppName in selected)
+                        {
+                            startupKey.DeleteValue(AppName, false);
+                        }
+                        startupKey.Close();
+                    }
+                    
+                }
+              
+               
             }
-            catch(Exception ex)
-            { MessageBox.Show(Convert.ToString(ex)); }
+            catch(Exception )
+            {  }
         }
     }
 }

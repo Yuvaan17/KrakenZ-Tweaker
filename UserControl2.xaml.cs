@@ -529,9 +529,10 @@ namespace KrakenZ_Tweaker.UserControls
 
         private void Disable_Services_Click(object sender, RoutedEventArgs e)
         {
-            if (Disable_Services.IsChecked == true)
-            {
-                string[] keys = {
+            try {
+                if (Disable_Services.IsChecked == true)
+                {
+                    string[] keys = {
              @"SYSTEM\CurrentControlSet\Services\AJRouter",
        @"SYSTEM\CurrentControlSet\Services\ALG",
        @"SYSTEM\CurrentControlSet\Services\CertPropSvc",
@@ -571,40 +572,40 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\WalletService",
          @"SYSTEM\CurrentControlSet\Services\WSearch",
            @"SYSTEM\CurrentControlSet\Services\WpnUserService",
-      
+
 
                             };
 
-                foreach (string key in keys)
-                {
-                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
-
+                    foreach (string key in keys)
                     {
-                        try
+                        using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
+
                         {
-
-
-                            if (newKey == null)
+                            try
                             {
 
-                            }
-                            else
-                            {
-                                newKey.SetValue("Start", 4, RegistryValueKind.DWord);
-                            }
 
+                                if (newKey == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    newKey.SetValue("Start", 4, RegistryValueKind.DWord);
+                                }
+
+                            }
+                            catch (Exception)
+                            {
+                            }
                         }
-                        catch (Exception)
-                        {
-                        }
+
                     }
 
                 }
-
-            }
-            else
-            {
-                string[] keys = {
+                else
+                {
+                    string[] keys = {
              @"SYSTEM\CurrentControlSet\Services\AJRouter",
        @"SYSTEM\CurrentControlSet\Services\ALG",
        @"SYSTEM\CurrentControlSet\Services\CertPropSvc",
@@ -644,39 +645,42 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\WalletService",
          @"SYSTEM\CurrentControlSet\Services\WSearch",
            @"SYSTEM\CurrentControlSet\Services\WpnUserService",
-    
+
 
                             };
 
-                foreach (string key in keys)
-                {
-                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
+                    foreach (string key in keys)
                     {
-                        try
+                        using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
                         {
-
-
-                            if (newKey == null)
+                            try
                             {
 
-                            }
-                            else
-                            {
-                                newKey.SetValue("Start", 3, RegistryValueKind.DWord);
-                            }
 
+                                if (newKey == null)
+                                {
+
+                                }
+                                else
+                                {
+                                    newKey.SetValue("Start", 3, RegistryValueKind.DWord);
+                                }
+
+                            }
+                            catch (Exception)
+                            {
+                            }
                         }
-                        catch (Exception)
-                        {
-                        }
+
+
                     }
-
 
                 }
 
             }
+            catch (Exception ex ) { MessageBox.Show(Convert.ToString(ex)); }
+            }
 
-        }
 
         private void Biometric_Services_Click(object sender, RoutedEventArgs e)
         {
