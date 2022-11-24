@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Microsoft.Win32;
 
 namespace KrakenZ_Tweaker.UserControls
@@ -46,6 +47,18 @@ namespace KrakenZ_Tweaker.UserControls
                     }
                 }
 
+            }
+            using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", true))
+            {
+                try
+                {
+                    uint a = Convert.ToUInt32(Key.GetValue("EnableLUA", RegistryValueKind.DWord));
+                    if (a == 0)
+                    {
+                        Disable_UAC.IsChecked=true;
+                    }
+                }
+                catch (Exception) { }
             }
             using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
             using (var rkey = hklm.OpenSubKey(@"SYSTEM\ControlSet001\Control", false))
@@ -162,8 +175,6 @@ namespace KrakenZ_Tweaker.UserControls
                     }
                 }
                 catch (Exception) { }
-
-
                 try
                 {
                     using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
@@ -185,11 +196,7 @@ namespace KrakenZ_Tweaker.UserControls
                     }
                 }
                 catch (Exception) { }
-
-
             }
-         
-
         }
 
         private void Optimize_Ram_Click(object sender, RoutedEventArgs e)
@@ -336,6 +343,69 @@ namespace KrakenZ_Tweaker.UserControls
                 catch (Exception) { }
 
             }
+
+        }
+
+        private void Uninstall_Click(object sender, RoutedEventArgs e)
+        {
+            Wow64Interop.EnableWow64FSRedirection(false);
+            ExecuteCommand("rundll32.exe shell32.dll,Control_RunDLL appwiz.cpl");
+
+        }
+
+        private void Disable_UAC_Click(object sender, RoutedEventArgs e)
+        {
+            if (Disable_UAC.IsChecked== true)
+            {
+                try
+                {
+                    using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", true))
+                    {
+                        Key.CreateSubKey("EnableLUA");
+                        Key.SetValue("EnableLUA", 0, RegistryValueKind.DWord);                    }
+                }
+                catch (Exception) { }
+            }
+            else
+            {
+                try
+                {
+                    using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", true))
+                    {
+                        Key.CreateSubKey("EnableLUA");
+                        Key.SetValue("EnableLUA", 1, RegistryValueKind.DWord);
+                    }
+                }
+                catch (Exception) { }
+
+            }
+        }
+
+        private void Disable_Updates_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\wuauserv", true))
+                {
+                    Key.SetValue("Start", 3, RegistryValueKind.DWord);
+                }
+                using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Services\UsoSvc", true))
+                {
+                    Key.SetValue("Start", 3, RegistryValueKind.DWord);
+                }
+                Wow64Interop.EnableWow64FSRedirection(false);
+                ExecuteCommand("taskkill -F -FI \"IMAGENAME eq SystemSettings.exe\"");
+                ExecuteCommand("reg add \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\" /v \"DoNotConnectToWindowsUpdateInternetLocations\" /t REG_DWORD /d \"1\" /f");
+                ExecuteCommand("reg add \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\" /v \"SetDisableUXWUAccess\" /t REG_DWORD /d \"1\" /f");
+                ExecuteCommand("reg add \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\" /v \"NoAutoUpdate\" /t REG_DWORD /d \"1\" /f");
+                ExecuteCommand("reg add \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\" /v \"ExcludeWUDriversInQualityUpdate\" /t REG_DWORD /d \"1\" /f");
+                ExecuteCommand("rd s q \"%SystemRoot%\\Windows\\SoftwareDistribution\"");
+                ExecuteCommand("md \"%SystemRoot%\\Windows\\SoftwareDistribution\"");
+            }
+            catch (Exception) { }
+
+
+      
 
         }
     }
