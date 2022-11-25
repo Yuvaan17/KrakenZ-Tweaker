@@ -55,18 +55,24 @@ namespace KrakenZ_Tweaker.UserControls
                     uint a = Convert.ToUInt32(Key.GetValue("EnableLUA", RegistryValueKind.DWord));
                     if (a == 0)
                     {
-                        Disable_UAC.IsChecked=true;
+                        Disable_UAC.IsChecked = true;
                     }
                 }
-                catch (Exception) { }
+                catch (Exception) { Disable_UAC.IsChecked = false; }
+
+
             }
             using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au"))
             {
-                uint a = Convert.ToUInt32(Key.GetValue("NoAutoUpdate", RegistryValueKind.DWord));
-                if(a == 1)
+                try
                 {
-                    Disable_Updates.IsChecked = true;
+                    uint a = Convert.ToUInt32(Key.GetValue("NoAutoUpdate", RegistryValueKind.DWord));
+                    if (a == 1)
+                    {
+                        Disable_Updates.IsChecked = true;
+                    }
                 }
+                catch (Exception) { Disable_Updates.IsChecked = false; }
 
             }
             using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
@@ -78,7 +84,7 @@ namespace KrakenZ_Tweaker.UserControls
 
                 if (rkey == null)
                 {
-                    a = 0; 
+                    a = 0;
                 }
                 else
                 {
@@ -101,47 +107,54 @@ namespace KrakenZ_Tweaker.UserControls
                 }
 
             }
-
-            string d = ExecuteCommand("Fsutil behavior query memoryusage");
+            try
+            {
+                string d = ExecuteCommand("Fsutil behavior query memoryusage");
                 if (d == "MemoryUsage = 2")
                 { Latency_Optimizations.IsChecked = true; }
-          
-                using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
-                using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+            }
+            catch (Exception) { Latency_Optimizations.IsChecked = false; }
+
+
+            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Registry64))
+            using (RegistryKey key = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"))
+            {
+                try
                 {
                     uint x = Convert.ToUInt32(key.GetValue("ShowSyncProviderNotifications", RegistryValueKind.DWord));
-                    
-                        using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"))
+
+                    using (RegistryKey key2 = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"))
+                    {
+                        uint a = Convert.ToUInt32(key2.GetValue("FeatureManagementEnabled", RegistryValueKind.DWord));
+                        uint b = Convert.ToUInt32(key2.GetValue("OemPreInstalledAppsEnabled", RegistryValueKind.DWord));
+                        uint c = Convert.ToUInt32(key2.GetValue("PreInstalledAppsEnabled", RegistryValueKind.DWord));
+                        uint l = Convert.ToUInt32(key2.GetValue("PreInstalledAppsEverEnabled", RegistryValueKind.DWord));
+                        uint e = Convert.ToUInt32(key2.GetValue("RotatingLockScreenEnabled", RegistryValueKind.DWord));
+                        uint f = Convert.ToUInt32(key2.GetValue("RotatingLockScreenOverlayEnabled", RegistryValueKind.DWord));
+                        uint g = Convert.ToUInt32(key2.GetValue("SilentInstalledAppsEnabled", RegistryValueKind.DWord));
+                        uint h = Convert.ToUInt32(key2.GetValue("SoftLandingEnabled", RegistryValueKind.DWord));
+                        uint i = Convert.ToUInt32(key2.GetValue("SubscribedContent-310093Enabled", RegistryValueKind.DWord));
+                        uint k = Convert.ToUInt32(key2.GetValue("SubscribedContent-338387Enabled", RegistryValueKind.DWord));
+                        uint z = Convert.ToUInt32(key2.GetValue("SubscribedContent-338388Enabled", RegistryValueKind.DWord));
+                        uint s = Convert.ToUInt32(key2.GetValue("SubscribedContent-338389Enabled", RegistryValueKind.DWord));
+                        uint v = Convert.ToUInt32(key2.GetValue("SubscribedContent-338393Enabled", RegistryValueKind.DWord));
+                        uint j = Convert.ToUInt32(key2.GetValue("SubscribedContent-353694Enabled", RegistryValueKind.DWord));
+                        uint q = Convert.ToUInt32(key2.GetValue("SubscribedContent-353696Enabled", RegistryValueKind.DWord));
+                        uint w = Convert.ToUInt32(key2.GetValue("SystemPaneSuggestionsEnabled", RegistryValueKind.DWord));
+
+
+
+                        if (a + b + c + l + e + f + g + h + i + k + z + s + v + j + q + w + x == 0)
                         {
-                            uint a = Convert.ToUInt32(key2.GetValue("FeatureManagementEnabled", RegistryValueKind.DWord));
-                            uint b  = Convert.ToUInt32(key2.GetValue("OemPreInstalledAppsEnabled",  RegistryValueKind.DWord));
-                            uint c = Convert.ToUInt32(key2.GetValue("PreInstalledAppsEnabled",  RegistryValueKind.DWord));
-                            uint l = Convert.ToUInt32(key2.GetValue("PreInstalledAppsEverEnabled",  RegistryValueKind.DWord));
-                            uint e = Convert.ToUInt32(key2.GetValue("RotatingLockScreenEnabled",  RegistryValueKind.DWord));
-                            uint f = Convert.ToUInt32(key2.GetValue("RotatingLockScreenOverlayEnabled",  RegistryValueKind.DWord));
-                            uint g = Convert.ToUInt32(key2.GetValue("SilentInstalledAppsEnabled",  RegistryValueKind.DWord));
-                            uint h = Convert.ToUInt32(key2.GetValue("SoftLandingEnabled",  RegistryValueKind.DWord));
-                            uint i = Convert.ToUInt32(key2.GetValue("SubscribedContent-310093Enabled", RegistryValueKind.DWord));
-                            uint k = Convert.ToUInt32(key2.GetValue("SubscribedContent-338387Enabled", RegistryValueKind.DWord));
-                            uint z = Convert.ToUInt32(key2.GetValue("SubscribedContent-338388Enabled",  RegistryValueKind.DWord));
-                            uint s = Convert.ToUInt32(key2.GetValue("SubscribedContent-338389Enabled", RegistryValueKind.DWord));
-                            uint v = Convert.ToUInt32(key2.GetValue("SubscribedContent-338393Enabled",  RegistryValueKind.DWord));
-                            uint j = Convert.ToUInt32(key2.GetValue("SubscribedContent-353694Enabled",  RegistryValueKind.DWord));
-                            uint q = Convert.ToUInt32(key2.GetValue("SubscribedContent-353696Enabled",  RegistryValueKind.DWord));
-                            uint w = Convert.ToUInt32(key2.GetValue("SystemPaneSuggestionsEnabled",  RegistryValueKind.DWord));
-                            if (a + b + c+l+e+f+g+h+i+k+z+s+v+j+q+w+x == 0)
-                            {
-
-                                Disable_Ads.IsChecked = true;
-
-                            }
+                            Disable_Ads.IsChecked = true;
                         }
-                  
-                }
-                
-         
-       
+                    }
 
+                }
+                catch (Exception) { }
+
+
+            }
         }
 
 
