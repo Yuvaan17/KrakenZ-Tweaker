@@ -48,7 +48,7 @@ namespace KrakenZ_Tweaker.UserControls
                 }
 
             }
-            using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System", true))
+            using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"))
             {
                 try
                 {
@@ -59,6 +59,15 @@ namespace KrakenZ_Tweaker.UserControls
                     }
                 }
                 catch (Exception) { }
+            }
+            using (RegistryKey Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au"))
+            {
+                uint a = Convert.ToUInt32(Key.GetValue("NoAutoUpdate", RegistryValueKind.DWord));
+                if(a == 1)
+                {
+                    Disable_Updates.IsChecked = true;
+                }
+
             }
             using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
             using (var rkey = hklm.OpenSubKey(@"SYSTEM\ControlSet001\Control", false))
