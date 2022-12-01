@@ -529,10 +529,12 @@ namespace KrakenZ_Tweaker.UserControls
 
         private void Disable_Services_Click(object sender, RoutedEventArgs e)
         {
-           
+            try { 
+
+
                 if (Disable_Services.IsChecked == true)
-                {
-                    string[] keys = {
+            {
+                string[] keys = {
              @"SYSTEM\CurrentControlSet\Services\AJRouter",
        @"SYSTEM\CurrentControlSet\Services\ALG",
        @"SYSTEM\CurrentControlSet\Services\CertPropSvc",
@@ -558,7 +560,6 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\PcaSvc",
        @"SYSTEM\CurrentControlSet\Services\Wecsvc",
         @"SYSTEM\CurrentControlSet\Services\tzautoupdate",
-        @"SYSTEM\CurrentControlSet\Services\BITS",
         @"SYSTEM\CurrentControlSet\Services\CDPSvc",
         @"SYSTEM\CurrentControlSet\Services\DusmSvc",
         @"SYSTEM\CurrentControlSet\Services\WdiSystemHost",
@@ -576,38 +577,38 @@ namespace KrakenZ_Tweaker.UserControls
 
                             };
 
-                    foreach (string key in keys)
+                foreach (string key in keys)
+                {
+                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
+
                     {
-                        using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
-
+                        try
                         {
-                            try
+
+
+                            if (newKey == null)
                             {
 
-
-                                if (newKey == null)
-                                {
-
-                                }
-                                else
-                                {
-                                    newKey.SetValue("Start", 4, RegistryValueKind.DWord);
-                                }
-
                             }
-                            catch (Exception x)
+                            else
                             {
-                            MessageBox.Show(Convert.ToString(x));
-                            
+                                newKey.SetValue("Start", 4, RegistryValueKind.DWord);
                             }
+
                         }
+                        catch (Exception x)
+                        {
+                            MessageBox.Show(Convert.ToString(x));
 
+                        }
                     }
 
                 }
-                else
-                {
-                    string[] keys = {
+
+            }
+            else
+            {
+                string[] keys = {
              @"SYSTEM\CurrentControlSet\Services\AJRouter",
        @"SYSTEM\CurrentControlSet\Services\ALG",
        @"SYSTEM\CurrentControlSet\Services\CertPropSvc",
@@ -633,7 +634,6 @@ namespace KrakenZ_Tweaker.UserControls
        @"SYSTEM\CurrentControlSet\Services\PcaSvc",
        @"SYSTEM\CurrentControlSet\Services\Wecsvc",
         @"SYSTEM\CurrentControlSet\Services\tzautoupdate",
-        @"SYSTEM\CurrentControlSet\Services\BITS",
         @"SYSTEM\CurrentControlSet\Services\CDPSvc",
         @"SYSTEM\CurrentControlSet\Services\DusmSvc",
         @"SYSTEM\CurrentControlSet\Services\WdiSystemHost",
@@ -651,37 +651,41 @@ namespace KrakenZ_Tweaker.UserControls
 
                             };
 
-                    foreach (string key in keys)
+                foreach (string key in keys)
+                {
+                    using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
                     {
-                        using (RegistryKey newKey = Registry.LocalMachine.OpenSubKey(key, true))
+                        try
                         {
-                            try
+
+
+                            if (newKey == null)
                             {
 
-
-                                if (newKey == null)
-                                {
-
-                                }
-                                else
-                                {
-                                    newKey.SetValue("Start", 3, RegistryValueKind.DWord);
-                                }
-
                             }
-                            catch (Exception x)
+                            else
+                            {
+                                newKey.SetValue("Start", 3, RegistryValueKind.DWord);
+                            }
+
+                        }
+                        catch (Exception x)
                         {
                             MessageBox.Show(Convert.ToString(x));
                         }
-                        }
-
-
                     }
 
+
                 }
+
+            }
+        }catch(Exception ex)
+            {
+                MessageBox.Show(Convert.ToString(ex));
+            }
 
           
-            }
+        }
 
 
         private void Biometric_Services_Click(object sender, RoutedEventArgs e)
