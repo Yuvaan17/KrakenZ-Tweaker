@@ -529,7 +529,7 @@ namespace KrakenZ_Tweaker.UserControls
 
         private void Disable_Services_Click(object sender, RoutedEventArgs e)
         {
-            try {
+           
                 if (Disable_Services.IsChecked == true)
                 {
                     string[] keys = {
@@ -595,8 +595,10 @@ namespace KrakenZ_Tweaker.UserControls
                                 }
 
                             }
-                            catch (Exception)
+                            catch (Exception x)
                             {
+                            MessageBox.Show(Convert.ToString(x));
+                            
                             }
                         }
 
@@ -667,9 +669,10 @@ namespace KrakenZ_Tweaker.UserControls
                                 }
 
                             }
-                            catch (Exception)
-                            {
-                            }
+                            catch (Exception x)
+                        {
+                            MessageBox.Show(Convert.ToString(x));
+                        }
                         }
 
 
@@ -677,8 +680,7 @@ namespace KrakenZ_Tweaker.UserControls
 
                 }
 
-            }
-            catch (Exception ex ) { MessageBox.Show(Convert.ToString(ex)); }
+          
             }
 
 
