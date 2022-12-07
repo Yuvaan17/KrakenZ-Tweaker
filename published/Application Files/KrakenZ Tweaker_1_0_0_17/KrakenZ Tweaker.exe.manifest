@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="KrakenZ Tweaker.exe" version="1.0.0.17" publicKeyToken="b8cea35efe142cd7" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="KrakenZ Tweaker Logo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="KrakenZ Tweaker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="KrakenZ Tweaker.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="KrakenZ Tweaker.exe" size="217064">
+      <assemblyIdentity name="KrakenZ Tweaker" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>ozuUEBBOz8lx71azy5TLItzySZIoU2OFXwDORNBNVUg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="KrakenZ Tweaker Logo.ico" size="16622">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>dwJbubTMU2k6GEhN2aiDPEGjsjXa01tgKQigRadz/98=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="KrakenZ Tweaker.exe.config" size="187">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>+CM46OnHRrXZXNLMx7+U3V3iubiYL//d8hGOR13lDhU=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=KRAKENZ\Yuvaan Nevatia" issuerKeyHash="1d300ea7c7b2e7bb14b6eced3eccdfef1427dfbc" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>iXby90sfo8PhX5Wr+I7CSQiSX/QeoebF8SA4RBnSSXw=</DigestValue></Reference></SignedInfo><SignatureValue>HVONWka3HPU7MhVttk56JzUh5s9LSCZ/+lq48tQSouuOGIRirX2bsFm1mE6LPuR4mXZOgFeebIyN2sENpIr1LHn+jTMHiPNa0ioHlXnHL9QcGdoFP+lBZ9ee06Cv/cEkS6UgdiQmV7vd7mATHC/2SC9RnnVw53irzZFzzH83uSY=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>r1v7bKWtJ09ABSgc+eF4MMK9X960xfCsXMKFqPLFI/DZpyfBWX5q3/Gzd5xVqEZznss40FeiEIhU7BWEj2lg7g1C13uhXQoJbHaDPcdw1r8qfANkJrj1KeNnfcmND1gb5GMHu/b/In6M32Izl4sXgSUbtzK6Knemyk1sW3kPiw0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="7c49d219443820f1c5e6a11ef45f920849c28ef8ab955fe1c3a31f4bf7f27689" Description="" Url=""><as:assemblyIdentity name="KrakenZ Tweaker.exe" version="1.0.0.17" publicKeyToken="b8cea35efe142cd7" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=KRAKENZ\Yuvaan Nevatia</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>6v9cU4fM2khA8DEI7ay8RNV0p7uC8n1nvPMC9xma+4g=</DigestValue></Reference></SignedInfo><SignatureValue>RvWjiL+qYfZEWvzz3aT5RhFQ02u2HHO3kAorPvs+ygo9DsdBSX1/ENjWXWV55Kife77zzM4UbMUxO4YEijL5SeGq7aaFJnDRb/hlhubaDG7Ebe4Yzw/2ZcmgPdJawYDsdGHghkAYkZECNmepvfNrDPlwL8DngCu1padXOtUbELc=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>r1v7bKWtJ09ABSgc+eF4MMK9X960xfCsXMKFqPLFI/DZpyfBWX5q3/Gzd5xVqEZznss40FeiEIhU7BWEj2lg7g1C13uhXQoJbHaDPcdw1r8qfANkJrj1KeNnfcmND1gb5GMHu/b/In6M32Izl4sXgSUbtzK6Knemyk1sW3kPiw0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB8TCCAVqgAwIBAgIQcghK6lZJ3ptNHI5/i0d5AzANBgkqhkiG9w0BAQsFADA3MTUwMwYDVQQDHiwASwBSAEEASwBFAE4AWgBcAFkAdQB2AGEAYQBuACAATgBlAHYAYQB0AGkAYTAeFw0yMjEwMjYwNTU5MTRaFw0yMzEwMjYxMTU5MTRaMDcxNTAzBgNVBAMeLABLAFIAQQBLAEUATgBaAFwAWQB1AHYAYQBhAG4AIABOAGUAdgBhAHQAaQBhMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvW/tspa0nT0AFKBz54Xgwwr1f3rTF8KxcwoWo8sUj8NmnJ8FZfmrf8bN3nFWoRnOeyzjQV6IQiFTsFYSPaWDuDULXe6FdCglsdoM9x3DWvyp8A2QmuPUp42d9yY0PWBvkYwe79v8ifozfYjOXixeBJRu3Mroqd6bKTWxbeQ+LDQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAKYAmCsXku/XQkeAIXV86MtBuzMBW7ghKY55GK6QCBiamSJSpZJRK4afysx0jy52EbPBNejlyottWfq2dqaEvQiz/9mD+zBux2uRS7Gr8Wu6aMp6cus1gb41Op91j8HfqMANJQECNgj971ysXbPuoIBpUDnJ1mlWKu1C9XZMTR4i</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

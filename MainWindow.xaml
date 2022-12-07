@@ -4,6 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            WindowStartupLocation="CenterScreen" 
+
         xmlns:local="clr-namespace:KrakenZ_Tweaker"
         mc:Ignorable="d"
         Title="KrakenZ Tweaker" Height="700" Width="1000" >
@@ -50,6 +52,7 @@
     </Window.Resources>
 
     <Grid Background="#FF4E4E4E" Margin="0,0,0,0" >
+
 
 
         <Grid HorizontalAlignment="Left" Background="#FF121820" Height="700" Width="300">
@@ -148,11 +151,75 @@
             </RadioButton>
 
         </Grid>
-        <StackPanel  x:Name="User_Control" Height="700" Width="700" Margin="298,-16,2,0">
-            <StackPanel.Triggers>
+        <Grid  x:Name="User_Control" VerticalAlignment="Top" Height="678" Width="700" Margin="298,0,2,0">
 
-            </StackPanel.Triggers>
-        </StackPanel>
+            <Button ToolTip="Checkout My YouTube Channel." Cursor="Hand" Name="YouTube" Click="YouTube_Click" Margin="10,608,637,27">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Images/YouTube.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button ToolTip="Join our Official Discord Server." Cursor="Hand" Name="Discord" Click="Discord_Click" Margin="63,609,594,27">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Source="/Images/Discord.png"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Separator Width="709" Height="13" HorizontalAlignment="Left" Margin="2,594,0,0" VerticalAlignment="Top"/>
+            <Button Name="Website" Click="Website_Click" Margin="151,617,403,-1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <TextBlock ToolTip="Official Website." Margin="0">
+
+    <Hyperlink FontSize="20">www.krakenz.xyz</Hyperlink>
+                        </TextBlock>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="Tutorial" Click="Tutorial_Click" Margin="318,618,252,31">
+                <Button.Template>
+                    <ControlTemplate>
+                        <TextBlock ToolTip="Watch my detailed tutorial video to learn &#x0a; how to use my this app for tweaking your pc!." Margin="0">
+
+    <Hyperlink FontSize="20">Tutorial video</Hyperlink>
+                        </TextBlock>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button ToolTip="If this app did help you, then consider supporting me. &#x0a; Your support will bring more updates to this app!" x:Name="Support" FontFamily="Comic Sans MS" Content="Support Me" HorizontalAlignment="Left" Margin="499,617,0,0" VerticalAlignment="Top" Height="28" Width="168" FontSize="20" Click="Support_Click"
+                    Cursor="Hand" >
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+
+                        <Setter Property="Background" Value="Orange"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter x:Name="Y" Property="Background" Value="#FCFF50"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+
+        </Grid>
+
 
 
 

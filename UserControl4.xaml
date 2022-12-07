@@ -63,23 +63,26 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <TextBlock Foreground="Yellow" TextWrapping="Wrap" Text=" Useful Windows Tweaks" FontFamily="Impact" FontSize="60" Height="100" Margin="7,40,8,560"  />
-        <CheckBox ToolTip="Increases overall system responsiveness by decreasing processes kill time and menu show delay! &#x0a; It also runs some other tweaks that will make your windows more responsive and faster. " Margin="23,254,23,402" Name ="Optimize_Registry" Click="Optimize_Registry_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >Increase Responsiveness</CheckBox>
-        <CheckBox ToolTip="Automatically searches for the amount of RAM installed on your system &#x0a; and optimizes your PC according to that. " Margin="23,300,23,356" Name ="Optimize_Ram" Click="Optimize_Ram_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >Optimize RAM</CheckBox>
-        <CheckBox ToolTip="Decreases latency on your Windows." Margin="23,208,23,448" x:Name ="Latency_Optimizations" Click="Latency_Optimizations_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >
+    <StackPanel >
+        <TextBlock Foreground="Yellow" TextWrapping="Wrap" Text=" Useful Windows Tweaks" FontFamily="Impact" FontSize="58" Height="72" Margin="0,40,0,0"  />
+        <Separator Margin="0,10,0,20" Background="LightGray" RenderTransformOrigin="0.5,0.5" Height="34" Width="676">
+
+        </Separator>
+        <CheckBox ToolTip="Increases overall system responsiveness by decreasing processes kill time and menu show delay! &#x0a; It also runs some other tweaks that will make your windows more responsive and faster. " Margin="0,4,0,0" Name ="Optimize_Registry" Click="Optimize_Registry_Click"  FontSize="24" Foreground="White" >Increase Responsiveness</CheckBox>
+        <CheckBox ToolTip="Automatically searches for the amount of RAM installed on your system &#x0a; and optimizes your PC according to that. " Margin="0,4,0,0" Name ="Optimize_Ram" Click="Optimize_Ram_Click"  FontSize="24" Foreground="White" >Optimize RAM</CheckBox>
+        <CheckBox ToolTip="Decreases latency on your Windows." Margin="0,4,0,0" x:Name ="Latency_Optimizations" Click="Latency_Optimizations_Click"  FontSize="24" Foreground="White"  >
             Latency Optimizations
         </CheckBox>
-        <CheckBox ToolTip="Decreases latency on your Windows" Margin="23,346,23,314" x:Name ="Disable_Ads" Click="Disable_Ads_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >
+        <CheckBox ToolTip="Decreases latency on your Windows" Margin="0,4,0,0" x:Name ="Disable_Ads" Click="Disable_Ads_Click"  FontSize="24" Foreground="White">
             Disable All Windows Ads
         </CheckBox>
-        <CheckBox ToolTip="User Account Control (UAC) is a Windows feature that sets &#x0a; levels of user authorization within the operating system" Margin="23,392,23,264" x:Name ="Disable_UAC" Click="Disable_UAC_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >
+        <CheckBox ToolTip="User Account Control (UAC) is a Windows feature that sets &#x0a; levels of user authorization within the operating system" Margin="0,4,0,0" x:Name ="Disable_UAC" Click="Disable_UAC_Click"  FontSize="24" Foreground="White"  >
             Disable UAC
         </CheckBox>
-        <CheckBox ToolTip="Disables automatic windows updates on your system &#x0a; so that it doesn't take up the resources" Margin="23,438,23,218" x:Name ="Disable_Updates" Click="Disable_Updates_Click"  FontSize="24" Foreground="White" Width="654" Height="44" >
+        <CheckBox ToolTip="Disables automatic windows updates on your system &#x0a; so that it doesn't take up the resources" Margin="0,4,0,0" x:Name ="Disable_Updates" Click="Disable_Updates_Click"  FontSize="24" Foreground="White"  >
             Disable Auto Windows Updates
         </CheckBox>
-        <Button ToolTip="Redirects you to the location from where you can &#x0a; easy remove junk programs from your system"  x:Name="Uninstall" FontFamily="Arial" HorizontalAlignment="Left" Margin="404,0,0,0" VerticalAlignment="Center" Height="78" Width="275" FontSize="25" Click="Uninstall_Click" Cursor="Hand" >
+        <Button ToolTip="Redirects you to the location from where you can &#x0a; easy remove junk programs from your system"  x:Name="Uninstall" FontFamily="Arial" HorizontalAlignment="Left" Margin="200,20,0,0" Height="78" Width="275" FontSize="25" Click="Uninstall_Click" Cursor="Hand" >
             <Grid>
                 <Image Source="/Images/Delete.png" Height="50" Width="260" HorizontalAlignment="Left"/>
                 <TextBlock FontSize="25" TextWrapping="Wrap" FontFamily="Arial" Margin="74,0,0,0">Uninstall useless Apps</TextBlock>
@@ -110,7 +113,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button ToolTip="Automatically determines your storage device and optimizes &#x0a; it according to your HDD or SSD" Click="OptimizeHDDSSD_Click"  x:Name="OptimizeHDDSSD" FontFamily="Arial"  HorizontalAlignment="Left" VerticalAlignment="Top" Height="78" Width="275" FontSize="25" Cursor="Hand" Margin="404,214,0,0"  >
+        <Button ToolTip="Automatically determines your storage device and optimizes &#x0a; it according to your HDD or SSD" Click="OptimizeHDDSSD_Click"  x:Name="OptimizeHDDSSD" FontFamily="Arial"  HorizontalAlignment="Left" Height="78" Width="275" FontSize="25" Cursor="Hand" Margin="200,20,0,0"  >
             <Grid>
                 <Image Source="/Images/HDD Icon.png" Height="50" Width="260" HorizontalAlignment="Left"/>
                 <TextBlock FontSize="25" TextWrapping="Wrap" FontFamily="Arial" Margin="74,0,0,0">Optimize HDD/SSD</TextBlock>
@@ -155,7 +158,7 @@
             </Separator.RenderTransform>
         </Separator>
 
-    </Grid>
+    </StackPanel>
 
 
 

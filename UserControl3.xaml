@@ -8,10 +8,10 @@
             d:DesignHeight="700" d:DesignWidth="700">
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="353*"/>
-            <ColumnDefinition Width="347*"/>
+            <ColumnDefinition Width="359*"/>
+            <ColumnDefinition Width="341*"/>
         </Grid.ColumnDefinitions>
-        <ListBox  Name="Junk_Files" Height="458" Width="650" Background="Gray" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="25,42,25,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <ListBox  Name="Junk_Files" Height="439" Background="Gray" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="25,17,25,0" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <ListBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -27,7 +27,7 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        <Button x:Name="Scan" FontFamily="Arial" Content="Scan For Junk files" HorizontalAlignment="Left" VerticalAlignment="Top" Height="66" Width="231" FontSize="25" Click="Scan_Click" Cursor="Hand" Margin="196,516,0,0" Grid.ColumnSpan="2" >
+        <Button x:Name="Scan" FontFamily="Arial" Content="Scan For Junk files" HorizontalAlignment="Left" VerticalAlignment="Top" Height="66" Width="231" FontSize="25" Click="Scan_Click" Cursor="Hand" Margin="190,474,0,0" Grid.ColumnSpan="2" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
 
@@ -54,7 +54,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button Click="CleanMGR_Click"  x:Name="CleanMGR" FontFamily="Arial" Content="Disk Cleanup" HorizontalAlignment="Left" VerticalAlignment="Top" Height="66" Width="163" FontSize="25" Cursor="Hand" Margin="16,516,0,0" >
+        <Button Click="CleanMGR_Click"  x:Name="CleanMGR" FontFamily="Arial" Content="Disk Cleanup" HorizontalAlignment="Left" VerticalAlignment="Top" Height="66" Width="163" FontSize="25" Cursor="Hand" Margin="16,474,0,0" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
 
@@ -81,7 +81,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="Clear_Files" FontFamily="Arial" Content="Clear the junk files" HorizontalAlignment="Left" Margin="89,516,0,0" VerticalAlignment="Top" Height="66" Width="218" FontSize="25" Click="Clear_Files_Click" Cursor="Hand" Grid.Column="1" >
+        <Button x:Name="Clear_Files" FontFamily="Arial" Content="Clear the junk files" HorizontalAlignment="Left" Margin="89,472,0,0" VerticalAlignment="Top" Height="66" Width="218" FontSize="25" Click="Clear_Files_Click" Cursor="Hand" Grid.Column="1" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
 
@@ -108,7 +108,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBlock Foreground="White" FontFamily="Comic Sans MS"  Name="Final" FontSize="30" HorizontalAlignment="Left" Margin="58,601,0,21" TextWrapping="Wrap" Text="File size to be cleared:" Width="597" Grid.ColumnSpan="2" />
+        <TextBlock Foreground="White" FontFamily="Comic Sans MS"  Name="Final" FontSize="30" HorizontalAlignment="Left" Margin="58,547,0,75" TextWrapping="Wrap" Text="File size to be cleared:" Width="597" Grid.ColumnSpan="2" />
 
 
     </Grid>

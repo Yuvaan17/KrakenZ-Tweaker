@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="700">
     <Grid>
-        <ListBox SelectionChanged="Startup_Apps_SelectionChanged" Height="458" Width="650" Background="Gray" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="25,42,25,0" VerticalAlignment="Top" Grid.ColumnSpan="2" SelectionMode="Multiple" Name="Startup_Apps" >
+        <ListBox SelectionChanged="Startup_Apps_SelectionChanged" Height="458" Width="650" Background="Gray" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="25,22,25,0" VerticalAlignment="Top" SelectionMode="Multiple" Name="Startup_Apps" >
             <ListBox.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -23,7 +23,7 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-        <Button x:Name="Refresh" FontFamily="Arial" Content="Refresh" HorizontalAlignment="Left" Margin="379,534,0,0" VerticalAlignment="Top" Height="66" Width="218" FontSize="25" Click="Refresh_Click" Cursor="Hand" >
+        <Button x:Name="Refresh" FontFamily="Arial" Content="Refresh" HorizontalAlignment="Left" Margin="379,514,0,0" VerticalAlignment="Top" Height="66" Width="218" FontSize="25" Click="Refresh_Click" Cursor="Hand" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
 
@@ -50,7 +50,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="Clear_Startup" FontFamily="Arial" Content="Remove Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Height="66" Width="231" FontSize="25" Click="Clear_Startup_Click" Cursor="Hand" Margin="102,536,0,0" >
+        <Button x:Name="Clear_Startup" FontFamily="Arial" Content="Remove Selected" HorizontalAlignment="Left" VerticalAlignment="Top" Height="66" Width="231" FontSize="25" Click="Clear_Startup_Click" Cursor="Hand" Margin="102,516,0,0" >
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
 

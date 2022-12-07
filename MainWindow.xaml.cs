@@ -144,5 +144,40 @@ namespace KrakenZ_Tweaker
             catch (Exception) { }
 
         }
+
+        private void YouTube_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://www.youtube.com/c/KrakenZYT";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+
+        }
+
+        private void Discord_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://discord.gg/Sea87E4e3X";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+
+        }
+
+        private void Website_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://www.krakenz.xyz";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+
+        }
+
+        private void Tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "Youtube Video Url";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+
+        }
+
+        private void Support_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://www.krakenz.xyz/p/support-me.html";
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+
+        }
     }
 }

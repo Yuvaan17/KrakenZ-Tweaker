@@ -430,5 +430,10 @@ namespace KrakenZ_Tweaker.UserControls
       
 
         }
+
+        private void Disable_Xbox_Services_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
